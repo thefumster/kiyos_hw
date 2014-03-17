@@ -1,0 +1,114 @@
+\documentclass[letterpage]{article}
+\usepackage{amsmath}
+
+\begin{document}\noindent
+1) \textbf{Dimensionally regularized Green function}
+The key formula
+\begin{equation}
+  \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|} = -4\pi \,\delta^3 (\mathbf{x} - 
+  \mathbf{x'})
+\end{equation}
+is mathematically tricky to prove because of the singularity at the origin.
+Various ways to soften that singularity to regularize the mathematics are
+employed. Prove this formula using the form
+\begin{equation}
+  G(\mathbf{x}-\mathbf{x'}) = \lim_{\eta \to 1^-} \frac{1}{|\mathbf{x}-
+  \mathbf{x'}|^\eta},
+\end{equation}
+with $\eta$ approaching unity from below.\\
+
+\noindent
+2)\textbf{Potential energy of a spherical ball}
+a)Use Gauss' Law to get the electric field inside and outside a spherical
+ball of charge $Q$ and radius $R$, with a uniform charge density.\\
+b)Calculate the potential energy that is needed to assemble this configuration
+by building up the ball bringing infinitesimal spherical shells in from 
+$r = \infty$.\\
+c)Verify that this potential energy is equal to
+\begin{equation}
+  W = \frac{\epsilon_0}{2} \int d^3xE^2(x)
+\end{equation}\\
+
+\noindent
+3)\textbf{Neutral Hydrogen}\\
+Jackson 1.5. Please explicitly verify that the total charge is zero.\\
+
+\noindent
+4) \textbf{Capacitance}\\
+Jackson 1.7. You do not need to estimate the gauges of wires required.
+It would be good to review the formulas relating to capacitance that were
+covered in your introductory physics course.
+
+\newpage
+\noindent
+1)
+\begin{align*}
+  \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|} &= -4\pi \,\delta^3 (\mathbf{x} - 
+  \mathbf{x'})\\
+  G(\mathbf{x}-\mathbf{x'}) &= \lim_{\eta \to 1^-} \frac{1}{|\mathbf{x}-
+  \mathbf{x'}|^\eta}
+\end{align*}
+In spherical coordinates, taking $\mathbf{x'} = 0$,
+\begin{equation*}
+  G(\mathbf{x}) = \lim_{\eta \to 1^-} \frac{1}{r^\eta}
+\end{equation*}
+\begin{align*}
+  \nabla^2 G(\mathbf{x}) &= \lim_{\eta \to 1^-} \nabla^2 \frac{1}{r^\eta}\\
+  &= \lim_{\eta \to 1^-} \frac{1}{r^2}\frac{\partial}{\partial r} r^2
+  \frac{\partial}{\partial r}r^{-\eta}\\
+  &= \lim_{\eta \to 1^-} \frac{1}{r^2} \frac{\partial}{\partial r} (-\eta r^2
+  \cdot r^{-\eta -1})\\
+  &= \lim_{\eta \to 1^-} \frac{-\eta}{r^2} \frac{\partial}{\partial r} 
+  r^{-\eta + 1}\\
+  &= \lim_{\eta \to 1^-} \frac{-\eta}{r^2}(1-\eta) r^{-\eta}\\
+  &= \lim_{\eta \to 1^-} -\eta(1-\eta)r^{-\eta - 2}\\  
+\end{align*}
+\begin{equation*}
+  \int d^3x -\eta(1 - \eta) r^{-\eta - 2}
+\end{equation*}
+\begin{align*}
+  &= -4\pi \eta(1 - \eta) \int_0^a dr \,r^{-\eta} \qquad a : \text{constant}\\
+  &= -4\pi \eta(1 - \eta) r^{-\eta + 1} \cdot \left. \frac{1}{1 - \eta} 
+  \right|_0^a\\
+  &= -4\pi \eta \cdot \left. r^{1 - \eta} \right| _0^a
+\end{align*}\\
+\noindent
+For $\eta < 1$, $(1 - \eta > 0)$ we get
+\begin{equation*}
+  = -4\pi \eta \cdot a^{1 - \eta}
+\end{equation*}
+\noindent
+Then,
+\begin{equation*}
+  \int d^3x \lim_{\eta \to 1^-} - \eta(1-\eta) r^{-\eta-2}
+\end{equation*}
+\begin{align*}
+  &= \lim_{\eta \to 1^-} \int d^3x - \eta(1-\eta)r^{-\eta-2}\\
+  &= \lim_{\eta \to 1^-} -4\pi \eta \cdot a^{1-\eta}\\
+  &= -4\pi
+\end{align*}\\
+\noindent
+If $\nabla^2G = -4\pi \delta^3 (\textbf{x})$, integrating both sides gives 
+$-4\pi$.\\ 
+Also,
+\begin{equation*}
+  \nabla^2G (\textbf{x}) = \lim_{\eta \to 1^-} - \eta(1-\eta) r^{-\eta-2} = 0
+\end{equation*} 
+unless r = 0.\\
+
+\noindent
+Therefore, we conclude
+\begin{equation*}
+  G(\textbf{x}) = \lim_{\eta \to 1^-} \frac{1}{r^\eta} = \frac{1}{r}
+  = \frac{1}{|\textbf{x}|}
+\end{equation*}
+is the green function.\\
+
+\noindent
+Now, shifting the coordinates by $\mathbf{x'}$ gives
+\begin{equation*}
+  G(\textbf{x} - \textbf{x}') = \frac{1}{|\textbf{x} - \textbf{x}'|}
+\end{equation*}
+
+
+\end{document}
