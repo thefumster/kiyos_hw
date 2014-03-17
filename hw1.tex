@@ -1,8 +1,9 @@
 \documentclass[letterpage]{article}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \begin{document}\noindent
-1) \textbf{Dimensionally regularized Green function}
+1) \textbf{Dimensionally regularized Green function}\\
 The key formula
 \begin{equation}
   \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|} = -4\pi \,\delta^3 (\mathbf{x} - 
@@ -18,7 +19,7 @@ employed. Prove this formula using the form
 with $\eta$ approaching unity from below.\\
 
 \noindent
-2)\textbf{Potential energy of a spherical ball}
+2)\textbf{Potential energy of a spherical ball}\\
 a)Use Gauss' Law to get the electric field inside and outside a spherical
 ball of charge $Q$ and radius $R$, with a uniform charge density.\\
 b)Calculate the potential energy that is needed to assemble this configuration
@@ -108,7 +109,114 @@ is the green function.\\
 Now, shifting the coordinates by $\mathbf{x'}$ gives
 \begin{equation*}
   G(\textbf{x} - \textbf{x}') = \frac{1}{|\textbf{x} - \textbf{x}'|}
+\end{equation*}\\
+
+\noindent
+2)\\
+a)Spherical ball\\
+Inside:
+\begin{equation*}
+  \rho = \frac{Q}{\frac{4}{3} \pi R^3} = \frac{3Q}{4\pi R^3}
+\end{equation*}\\
+For a gaussian surface of sphere with radius $r<R$,
+\begin{equation*}
+  \oint \textbf{E} \cdot d \textbf{A} = E \cdot 4\pi r^2 = \frac{4}{3} \pi r^3
+  \cdot \frac{3Q}{4\pi R^3} = \frac{Q}{\varepsilon_0} \frac{r^3}{R^3}
 \end{equation*}
 
-
+\begin{equation*}  
+  \therefore \textbf{E}_{inside} = \frac{Qr}{4\pi \varepsilon_0 R^3} \cdot
+  \hat{r}
+\end{equation*}\\
+\noindent
+Outside:
+\begin{equation*}
+  \textbf{E}_{out} = \frac{Q}{4\pi \varepsilon_0 r^2} \cdot \hat{r}
+\end{equation*}\\
+\noindent
+b)Bringing an infinitesimal spherical surface basically means we will assemble
+the ball layer by layer, by bringing an infinitesimal chance $dq$ and putting
+it uniformly over the surface.\\
+\noindent
+Energy necessary to create a thin layer of thickness $dr$ around a sphere of 
+radius $r$;
+\begin{equation*}
+  dW = dq \quad \phi(\textbf{x})
+\end{equation*}
+potential due to a sphere of radius $r$
+\begin{equation*}
+  = \left(4\pi r^2 dr \cdot \rho \right) \cdot 
+  \left(\frac{1}{4\pi \varepsilon_0} 
+  \frac{\frac{4}{3} \pi r^3 \rho}{r}\right)
+\end{equation*}
+since we can bring the layer in a spherically symmetric way.\\
+\noindent
+Energy necessary to assemble the whole ball is then
+\begin{align*}
+  W = \int dw &= \int_0^r \left(4\pi r^2 dr \rho \right) 
+  \left(\frac{1}{4\pi \varepsilon_0} \frac{\frac{4}{3}\pi r^3 \rho}{r} \right)
+  , \quad \rho = \frac{3Q}{4\pi R^3}\\
+  &= 4\pi \frac{3Q}{4\pi R^3} \cdot \frac{1}{4\pi \varepsilon_0} \cdot
+  \frac{4}{3}\pi \cdot \frac{3Q}{4\pi R^3} \int_0^R dr \cdot r^4\\
+  &= \frac{3Q^2}{4\pi \varepsilon_0 R^3} \cdot R^3 \cdot \frac{1}{5} R^5\\
+  &= \frac{1}{4\pi \varepsilon_0} \left(\frac{3Q^2}{5R} \right)
+\end{align*}\\
+\noindent
+c)
+\begin{equation*}
+  W = \frac{\varepsilon_0}{2} \int d^3x E^2(x)
+\end{equation*}
+Part (a) we solved for the electric field;
+\begin{equation*}
+  \textbf{E}_{out} = \frac{Q}{4\pi \varepsilon_0 r^2} \cdot \hat{r} 
+  \qquad \textbf{E}_{in} = \frac{Qr}{4\pi R^3} \cdot \hat{r}
+\end{equation*}
+Then,
+\begin{align*}
+  W &= \frac{\varepsilon_0}{2} \int d^3x E^2(x)\\
+  &= \frac{\varepsilon_0}{2} \int_0^R 4\pi r^2 dr \cdot 
+  \frac{Q^2 r^2}{\left(4\pi \varepsilon_0 \right)^2 R^6} \quad + \quad 
+  \frac{\varepsilon_0}{2}
+  \int_R^\infty 4\pi r^2 dr \frac{Q^2}{\left(4\pi \varepsilon_0 \right)^2 r^4}\\
+  &= \frac{\varepsilon_0}{2} \cdot \frac{4\pi Q^2}
+  {\left(4\pi \varepsilon_0 \right)^2 R^6} \int_0^R dr \cdot r^4 \quad + \quad
+  \frac{\varepsilon_0}{2} 4\pi \cdot \frac{Q^2}{(4\pi \varepsilon_0)^2}
+  \int_R^\infty \frac{dr}{r^2}\\
+  &= \frac{Q^2}{4\pi \varepsilon_0 \cdot 2R^6} \cdot \frac{1}{5} R^5 \quad +
+  \quad \frac{Q^2}{4\pi \varepsilon_0 \cdot 2} \cdot \frac{1}{R}\\
+  &= \frac{1}{4\pi \varepsilon_0} \cdot \frac{6Q^2}{10R}\\
+  &= \frac{1}{4\pi \varepsilon_0} \left(\frac{3Q^2}{5R}\right)
+\end{align*}\\
+\noindent
+3) 1.5
+\begin{equation*}
+  \phi = \frac{q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r} 
+  \left(1+ \frac{\alpha r}{2} \right)
+\end{equation*}
+\begin{equation*}
+  \textbf{E} = -\nabla \phi
+\end{equation*}
+\begin{align*}
+  \nabla \phi &= \frac{\partial \phi}{\partial r} \hat{r}\\
+  &= \frac{-q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r^2} 
+  \left(1 + \alpha r + \frac{1}{2} \alpha ^2 r^2 \right) \hat{r}
+\end{align*}
+\begin{align*}
+  \frac{d}{dr} \phi &= \frac{q}{4\pi \varepsilon_0} \frac{d}{dr} 
+  \left[\frac{e^{-\alpha r}}{r} \left(1+\frac{\alpha r}{2} \right)\right]\\
+  &= \frac{-q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r^2} 
+  \left(1+\alpha r + \frac{1}{2} \alpha ^2 r^2 \right)
+\end{align*}
+\begin{equation*}
+  -\frac{\rho_{(r)}}{\varepsilon_0} = \nabla ^2 \phi = 
+  \nabla \cdot \nabla \phi
+  = -\frac{q}{4\pi \varepsilon_0} \nabla \cdot
+  \left(\frac{e^{-\alpha r}}{r^2} \hat{r}+ \frac{\alpha e^{-\alpha r}}{r}
+  \hat{r} + \frac{1}{2} \alpha ^2 e^{-\alpha r} \hat{r} \right)
+\end{equation*}
+\begin{equation*}
+  \nabla \cdot \frac{e^{-\alpha r}}{r^2} \hat{r} = \mathbf{\nabla}
+  \left(e^{-\alpha r} \frac{\hat{r}}{r^2} \right) = e^{-\alpha r} \left(\nabla
+  \cdot \frac{\hat{r}}{r^2} \right) + \frac{\hat{r}}{r^2} \cdot \nabla e^{-\alpha r}
+\end{equation*}
 \end{document}
